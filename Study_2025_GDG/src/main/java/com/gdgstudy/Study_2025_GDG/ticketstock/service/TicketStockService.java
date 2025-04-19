@@ -18,11 +18,11 @@ public class TicketStockService {
         return ticketStock.getQuantity();
     }
     public Integer addTicketStock(Ticket ticket){
-        TicketStock ticketStock = ticketStockRepository.findByTicket(ticket).orElseThrow(()->new NotFoundTicketException("티켓스톡이 없습니다."));
+        TicketStock ticketStock = ticketStockRepository.findByTicket(ticket).orElseThrow(()->new NotFoundTicketException("ticketStock이 없습니다."));
         return ticketStock.addTicketStock();
     }
     public Integer subicketStock(Ticket ticket){
-        TicketStock ticketStock = ticketStockRepository.findByTicket(ticket).orElseThrow(()->new NotFoundTicketException("티켓스톡이 없습니다."));
+        TicketStock ticketStock = ticketStockRepository.findByTicket(ticket).orElseThrow(()->new NotFoundTicketException("ticketStock이 없습니다."));
         return ticketStock.subTicketStock();
     }
 
