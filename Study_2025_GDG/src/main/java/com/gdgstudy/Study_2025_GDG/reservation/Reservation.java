@@ -27,11 +27,12 @@ public class Reservation {
         this.user_name=user_name; this.ticket=ticket;
     }
 
-    public CreateReservationResponse toDto(){
+    public CreateReservationResponse toDto(Integer ticketStock){
         return CreateReservationResponse.builder()
                 .reservation_id(this.reservation_id)
                 .ticket_id(this.ticket.getTicket_id())
                 .user_name(this.user_name)
+                .ticket_stock(ticketStock)
                 .build();
     }
 }

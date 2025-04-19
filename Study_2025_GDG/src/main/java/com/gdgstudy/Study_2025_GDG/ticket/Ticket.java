@@ -2,6 +2,7 @@ package com.gdgstudy.Study_2025_GDG.ticket;
 
 import com.gdgstudy.Study_2025_GDG.reservation.Reservation;
 import com.gdgstudy.Study_2025_GDG.ticket.dto.CreateTicketResponse;
+import com.gdgstudy.Study_2025_GDG.ticketstock.TicketStock;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -20,18 +21,22 @@ public class Ticket {
 
     private String name;
 
-    @OneToMany(mappedBy = "reservation_id")
+    @OneToMany(mappedBy = "ticket")
     private List<Reservation> reservations;
+
+    @OneToOne(mappedBy = "ticket")
+    private TicketStock ticketStock;
 
     @Builder
     private Ticket(String name){
         this.name=name;
     }
 
-    public CreateTicketResponse toDto(){
+    public CreateTicketResponse toDto(Integer ticketStock){
         return CreateTicketResponse.builder()
                 .id(this.ticket_id)
                 .name(this.name)
+                .ticket_stock(ticketStock)
                 .build();
     }
 }
