@@ -28,7 +28,7 @@ public class Ticket {
     private TicketStock ticketStock;
 
     @Builder
-    private Ticket(String name){
+    public Ticket(String name){
         this.name=name;
     }
 
