@@ -15,4 +15,8 @@ public class CreateReservationRequest {
                 .ticket(ticket)
                 .build();
     }
+    public CreateReservationRequest(Long ticket_id, String user_name){
+        this.ticket_id=ticket_id;
+        this.user_name=user_name;
+    }
 }

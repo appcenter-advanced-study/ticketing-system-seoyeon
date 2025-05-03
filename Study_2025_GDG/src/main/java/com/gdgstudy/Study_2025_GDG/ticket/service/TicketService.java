@@ -1,5 +1,6 @@
 package com.gdgstudy.Study_2025_GDG.ticket.service;
 
+import com.gdgstudy.Study_2025_GDG.exception.NotFoundTicketException;
 import com.gdgstudy.Study_2025_GDG.ticket.Ticket;
 import com.gdgstudy.Study_2025_GDG.ticket.dto.CreateTicketRequest;
 import com.gdgstudy.Study_2025_GDG.ticket.dto.CreateTicketResponse;
@@ -19,5 +20,9 @@ public class TicketService {
         ticket = ticketRepository.save(ticket);
         Integer ticketStock = ticketStockService.createTiketStock(ticket);
         return ticket.toDto(ticketStock);
+    }
+    public Ticket getTicket(Long id){
+        Ticket ticket = ticketRepository.findById(id).orElseThrow(()->new NotFoundTicketException("ticket이 없습니다."));
+        return ticket;
     }
 }

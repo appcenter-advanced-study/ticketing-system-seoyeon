@@ -17,7 +17,6 @@ public class ReservationService {
     private final ReservationRepository reservationRepository;
     private final TicketRepository ticketRepository;
     private final TicketStockService ticketStockService;
-
     public CreateReservationResponse createReservation(CreateReservationRequest request){
         Ticket ticket = ticketRepository.findById(request.getTicket_id()).orElseThrow(()-> new NotFoundTicketException("티켓을 찾을 수 없습니다."));
         Integer ticketStock = ticketStockService.subicketStock(ticket);

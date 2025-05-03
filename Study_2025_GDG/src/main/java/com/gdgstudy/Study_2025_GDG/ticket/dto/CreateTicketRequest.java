@@ -12,4 +12,8 @@ public class CreateTicketRequest {
                 .name(this.name)
                 .build();
     }
+
+    public CreateTicketRequest(String name){
+        this.name = name;
+    }
 }
